@@ -1,0 +1,32 @@
+#editor-tools {
+	background:lightgreen;
+}
+
+#editor-canvas {
+	min-height:500px;
+	background:pink;
+}
+
+/* -- Editor tools --                                */
+/* The draggable options on the side bar to the left */
+
+.editor-tool {
+	background:lightblue;
+	position:relative;
+}
+
+.editor-tool .drag-handle {
+	background:url("../img/icons/drag-handle-vertical.png") no-repeat center center;
+	display:block;
+	height:30px;
+	width:20px;
+	float:left;
+}
+
+/* -- End of editor tools styles. -- */
+
+fieldset {
+	background:red;
+	height:100px;
+	margin-bottom:10px;
+}

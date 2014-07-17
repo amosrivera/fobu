@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Pilote | Editor de encuestas</title>
+
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/bootstrap-tour.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">Estás usando un navegador <strong>desactualizado</strong>. Por
+			favor <a href="http://browsehappy.com/">instala uno más reciente</a> para asegurar el
+			funcionamiento del sistema.</p>
+        <![endif]-->
+
+        <main class="col-md-12" id="main">
+            <div id="editor-container" ng-app="fobu">
+                <div id="editor-tools" class="col-md-3" ng-controller="tools">                    
+                    <div class="editor-tool" id="editor-tool-input" fobu-draggable="text">
+                        <span class="drag-handle"></span>
+                        <h3>Campo de texto</h3>
+                        <span>Nombre, correo, telefono</span>
+                    </div>
+                    <div class="editor-tool" id="editor-tool-date" fobu-draggable="date">
+                        <span class="drag-handle"></span>
+                        <h3>Fecha</h3>
+                        <span>dd/mm/aaaa</span>
+                    </div>
+                    <div class="editor-tool" id="editor-tool-number" fobu-draggable="number">
+                        <span class="drag-handle"></span>
+                        <h3>Número</h3>
+                        <span>Ingresos, distancias, tiempo</span>
+                    </div>
+                    <div class="editor-tool" id="editor-tool-select" fobu-draggable="select">
+                        <span class="drag-handle"></span>
+                        <h3>Menu de opciones</h3>
+                        <span>Escolaridad, estado de la vivienda</span>
+                    </div>
+                    <div class="editor-tool" id="editor-tool-checkbox" fobu-draggable="checkbox">
+                        <span class="drag-handle"></span>
+                        <h3>Opción única</h3>
+                        <span>Asiste a la escuela?</span>
+                    </div>
+                    <div class="editor-tool" id="editor-tool-textarea" fobu-draggable="textarea">
+                        <span class="drag-handle"></span>
+                        <h3>Pregunta abierta</h3>
+                        <span>Descripciones, comentarios</span>
+                    </div>
+                    <div class="editor-tool" id="editor-tool-header" fobu-draggable="header">
+                        <span class="drag-handle"></span>
+                        <h3>Texto</h3>
+                        <span>Introducción a pregunta/sección</span>
+                    </div>
+                </div>
+
+                <div id="editor-canvas" class="col-md-9" ng-controller="canvas">
+                    <fieldset fobu-droppable>
+                        
+                    </fieldset>
+                    <fieldset fobu-droppable>
+                        
+                    </fieldset>
+                </div>
+            </div>
+        </main>
+
+        <script src="js/vendor/jquery.min.js"></script>
+        <script src="js/vendor/jquery-ui.custom.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/bootstrap-tour.min.js"></script>
+        <script src="js/vendor/angular.min.js"></script>
+        <script src="js/directives/ui.directive.js"></script>
+        <script src="js/app.js"></script>
+
+        <script>
+            //(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            //function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            //e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            //e.src='//www.google-analytics.com/analytics.js';
+            //r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            //ga('create','UA-38701388-1');ga('send','pageview');
+        </script>
+    </body>
+</html>
