@@ -2,6 +2,16 @@
 
 var app = angular.module('editorUI',[]);
 
+app.directive('fobuQuestion', function(){
+	return {
+		restrict:'A',
+		link: function($scope,element,attr){
+			$scope.templateUrl = "templates/"+ $scope.question.type +".html?ud="+(new Date().getTime());
+		},
+		template:"<div ng-include='templateUrl'></div>"
+	}
+})
+
 app.directive('fobuDraggable', function(){
 	return {
 		restrict: 'A',
@@ -21,42 +31,23 @@ app.directive('fobuDroppable', function(){
 		restrict: 'A',
 		link: function($scope, element, attr){
 			element.droppable({
+				greedy:true,
 				drop: function(event,ui){
-					console.log("Dropping.");
+					var type = ui.draggable.attr("fobu-draggable");
+					var moduleId = $(this).is(".module") ? $(this).data("index") : null;
+
+					console.log($(this));
+					$scope.addQuestion(type,moduleId);
 				}
 			})
 		}
 	}
 })
 
-app.directive('fobuSortable', function($compile){
+app.directive('fobuSortable', function(){
 	return {
-		restrict:'A',
-		link: function($scope,element,attr){
-
-			element.sortable({
-				placeholder:'field-placeholder',
-				containment:'#editor-canvas',
-				items:'.field',
-				handle:'.drag-handle',
-				cursorAt: { 
-					top: 20, 
-					left: 0 
-				},
-				receive: function (event, ui) {
-					console.log("Receiving...");
-				},
-   				update:function(event,ui) {
-   					console.log("Updating...");
-   				},
-				start: function( event, ui ) {
-					console.log("Sort start...");
-				},
-				stop: function(event, ui) {
-					console.log("Sort stop...");
-				}
-			});
-
+		restrict: 'A',
+		link: function($scope, element, attr){
 		}
 	}
-});
+})

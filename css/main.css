@@ -25,8 +25,27 @@
 
 /* -- End of editor tools styles. -- */
 
-fieldset {
-	background:red;
-	height:100px;
+/* modules and questions */
+
+.module {
+	border:1px solid blue;
 	margin-bottom:10px;
 }
+
+.question .controls {
+	display:none;
+}
+
+.question.selected .controls {
+	display:block;
+}
+
+.question.selected .preview {
+	display:none;
+}
+
+.question.selected {
+	background:red;
+}
+
+/* -- end of modules and questions -- */

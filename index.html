@@ -28,7 +28,7 @@
 
         <main class="col-md-12" id="main">
             <div id="editor-container" ng-app="fobu">
-                <div id="editor-tools" class="col-md-3" ng-controller="tools">                    
+                <div id="editor-tools" class="col-md-3">                    
                     <div class="editor-tool" id="editor-tool-input" fobu-draggable="text">
                         <span class="drag-handle"></span>
                         <h3>Campo de texto</h3>
@@ -59,19 +59,11 @@
                         <h3>Pregunta abierta</h3>
                         <span>Descripciones, comentarios</span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-header" fobu-draggable="header">
-                        <span class="drag-handle"></span>
-                        <h3>Texto</h3>
-                        <span>Introducción a pregunta/sección</span>
-                    </div>
                 </div>
 
-                <div id="editor-canvas" class="col-md-9" ng-controller="canvas">
-                    <fieldset fobu-droppable>
-                        
-                    </fieldset>
-                    <fieldset fobu-droppable>
-                        
+                <div id="editor-canvas" class="col-md-9" ng-click="select(null);" ng-controller="canvas" fobu-droppable>
+                    <fieldset class="module" data-index="{[{$index}]}" ng-repeat="module in modules track by $index" fobu-droppable>
+                        <div class="question" ng-click="select($index); $event.stopPropagation();" ng-class="{ selected: activeQuestion == $index }" ng-repeat="question in module.questions track by $index" fobu-question></div>
                     </fieldset>
                 </div>
             </div>
@@ -83,6 +75,7 @@
         <script src="js/vendor/bootstrap-tour.min.js"></script>
         <script src="js/vendor/angular.min.js"></script>
         <script src="js/directives/ui.directive.js"></script>
+        <script src="js/services/defaults.service.js"></script>
         <script src="js/app.js"></script>
 
         <script>

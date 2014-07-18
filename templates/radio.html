@@ -1,0 +1,34 @@
+<div class="form-group">
+
+	<div class="preview">
+		<label class="control-label">{[{question.title}]}</label>
+		<p class="help-block">{[{question.help}]}</p>
+		<div class="radio" ng-repeat="option in question.options">
+		  <label>
+		    <input type="radio" name="{[{option.name}]}" value="{[{$index}]}">
+		    {[{ option.title }]}
+		  </label>
+		</div>
+	</div>
+
+	<div class="controls">
+        <span class="drag-handle"></span>
+		<p><input type="text" ng-model="question.title" class="form-control"/></p>
+		<p><input type="text" ng-model="question.help" placeholder="Texto de ayuda" class="form-control"/></p>
+		<div class="clearfix radio" ng-repeat="option in question.options">
+		  <label>
+		    <input type="radio" class="pull-left" disabled>
+		    <input type="text" ng-model="option.title" class="pull-left form-control"/>
+		    <span class="pull-left close-icon" ng-click="removeSelectOption($parent.$index,$index); $event.stopPropagation();"></span>
+		  </label>
+		</div>		
+		<div class="clearfix radio">
+		  <label>
+		    <input type="radio" class="pull-left" disabled>
+		    <input type="text" placeholder="Digita el nombre y presionar la tecla Enter." ng-keypress="$event.which == 13 && addSelectOption($index,$event.currentTarget)" ng-blur="addSelectOption($index,$event.currentTarget)" class="pull-left form-control"/>
+		  </label>
+		</div>		
+        <span class="drag-handle bottom"></span>
+	</div>
+	
+</div>
