@@ -12,7 +12,7 @@
 	</div>
 
 	<div class="controls">
-        <span class="drag-handle"></span>
+	    <div class="drag-handle"></div>
 		<p><input type="text" ng-model="question.title" class="form-control"/></p>
 		<p><input type="text" ng-model="question.help" placeholder="Texto de ayuda" class="form-control"/></p>
 		<div class="clearfix radio" ng-repeat="option in question.options">
@@ -25,10 +25,10 @@
 		<div class="clearfix radio">
 		  <label>
 		    <input type="radio" class="pull-left" disabled>
-		    <input type="text" placeholder="Digita el nombre y presionar la tecla Enter." ng-keypress="$event.which == 13 && addSelectOption($index,$event.currentTarget)" ng-blur="addSelectOption($index,$event.currentTarget)" class="pull-left form-control"/>
+		    <input type="text" placeholder="Digita el nombre y presionar la tecla Enter." ng-keypress="$event.which == 13 && addSelectOption($parent.$index,$index,$event.currentTarget)" class="pull-left form-control"/>
 		  </label>
 		</div>		
-        <span class="drag-handle bottom"></span>
+	    <div class="drag-handle"></div>
 	</div>
 	
 </div>

@@ -62,8 +62,13 @@
                 </div>
 
                 <div id="editor-canvas" class="col-md-9" ng-click="select(null);" ng-controller="canvas" fobu-droppable>
-                    <fieldset class="module" data-index="{[{$index}]}" ng-repeat="module in modules track by $index" fobu-droppable>
-                        <div class="question" ng-click="select($index); $event.stopPropagation();" ng-class="{ selected: activeQuestion == $index }" ng-repeat="question in module.questions track by $index" fobu-question></div>
+                    <fieldset class="module" ng-class="{ selected: activeElement == module.name }" data-index="{[{$index}]}" ng-repeat="module in modules track by $index" fobu-droppable fobu-sortable>
+
+                        <div class="module-info" fobu-module-info ng-click="select(module.name); $event.stopPropagation();"></div>
+
+                        <div class="module-questions">
+                            <div class="question" ng-click="select(question.name); $event.stopPropagation();" ng-class="{ selected: activeElement == question.name }" ng-repeat="question in module.questions track by $index" fobu-question id="{[{$index}]}"></div>
+                        </div>
                     </fieldset>
                 </div>
             </div>

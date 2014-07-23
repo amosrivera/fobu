@@ -42,7 +42,7 @@ app.factory('_defaults',function($http){
 		},
 		module:{
 			title:"Módulo",
-			text: "Espacio para incluir una descripción"
+			description: "Espacio para incluir una descripción"
 					+ "corta sobre un campo o una introducción a una" 
 					+ "sección diferente en la encuesta.",
 			type:"module",

@@ -21,6 +21,7 @@ Low priority
 - Clean CSS
 - Fix tag nesting <div> <element> <select> for fields
 - Unit testing
+- Performance bottle necks
 
 Completed
 =========

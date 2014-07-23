@@ -21,17 +21,52 @@
 	height:30px;
 	width:20px;
 	float:left;
+	cursor:move;
 }
 
 /* -- End of editor tools styles. -- */
 
-/* modules and questions */
+/* Modules */
 
 .module {
 	border:1px solid blue;
 	margin-bottom:10px;
 }
 
+.module-info {
+	padding:10px;
+	background:#f4f4f4;
+}
+
+.module-info h1 {
+	margin:0;
+}
+
+.module-info input {
+	margin-bottom:10px;
+}
+
+.module-info .preview {
+	display:block;
+}
+
+.module-info .controls {
+	display:none;
+}
+
+.module.selected .module-info .preview {
+	display:none;
+}
+
+.module.selected .module-info .controls {
+	display:block;
+}
+
+/* -- end of Modules -- */
+
+/* Questions */
+
+/* if not selected nor dragging, show the preview */
 .question .controls {
 	display:none;
 }
@@ -40,6 +75,7 @@
 	display:block;
 }
 
+/* when selected show the controls */
 .question.selected .preview {
 	display:none;
 }
@@ -48,4 +84,41 @@
 	background:red;
 }
 
-/* -- end of modules and questions -- */
+/* when dragging, show the preview version */
+.question.selected.ui-sortable-helper .preview {
+	display:block;
+}
+
+.question.selected.ui-sortable-helper .controls {
+	display:none;
+}
+
+.question .drag-handle {
+	height:20px;
+	background:red;
+	background:url("../img/icons/drag-handle.png") no-repeat center center;
+	cursor:move;
+}
+
+.question .drag-handle.bottom {
+	background:none;
+	height:10px;
+	cursor:move;
+}
+
+/* -- Questions -- */
+
+/* UI Sortable */
+.question-placeholder {
+	background:green;
+}
+
+/* -- end of UI sortable -- */
+
+/* Bootstrap rewrites */
+
+.form-group {
+	margin-bottom:0;
+}
+
+/* -- end of boostrap rewrites -- */

@@ -11,6 +11,10 @@ app.controller('canvas', function($scope,_defaults){
 
 	$scope.modules = [];
 
+	$scope.select = function(index) {
+		$scope.activeElement = index;
+	}
+
 	// this method could be merged with the addquestion method
 	// but is kept separated for simplicity
 	$scope.addModule = function(){
@@ -52,14 +56,30 @@ app.controller('canvas', function($scope,_defaults){
 			$scope.modules[moduleId]["questions"].push(question);
 		}); 
 
+		console.log($scope.modules);
+
 	}
 
 	$scope.removeQuestion = function(type){
 		console.log("Removing question...");
 	}
 
-	$scope.select = function(index) {
-		$scope.activeQuestion = index;
+	$scope.addSelectOption = function(moduleId,questionId,input){
+
+		if(input.value.length > 0){
+
+			// maybe modify array prototype to add a method to add questions
+			// instead of this long ugly string
+			$scope.modules[moduleId]["questions"][questionId].options.push({ title: input.value });
+			input.value = "";
+		}
+	}
+
+	$scope.removeSelectOption = function(moduleId,questionId,index){
+
+		// Delete element from the array. Angular automatically
+		// refreshes the view
+		$scope.modules[moduleId]["questions"][questionId].options.splice(index,1);
 	}
 
 });
