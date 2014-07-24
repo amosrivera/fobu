@@ -94,6 +94,10 @@
 	margin-bottom:10px;
 }
 
+.module-questions {
+	padding:10px;
+}
+
 /* if not selected nor dragging, show the preview */
 .question .controls {
 	display:none;
@@ -113,7 +117,7 @@
 	border:1px solid #ccc;
 }
 
-/* when dragging, show the preview version 
+/* when dragging, show the preview version */
 .question.selected.ui-sortable-helper .preview {
 	display:block;
 }
@@ -121,7 +125,11 @@
 .question.selected.ui-sortable-helper .controls {
 	display:none;
 }
-*/
+
+.question.selected.ui-sortable-helper {	
+	padding:10px;
+}
+
 .question .drag-handle {
 	height:20px;
 	background:url("../img/icons/drag-handle.png") no-repeat center center;
@@ -140,6 +148,7 @@
 .question-placeholder {
 	border:1px dotted #ccc;
 	border-radius:5px;	
+	height:60px;
 }
 
 .question-placeholder.fobu-draggable {

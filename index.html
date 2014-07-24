@@ -54,6 +54,11 @@
                         <h3>Opción única</h3>
                         <span>Asiste a la escuela?</span>
                     </div>
+                    <div class="editor-tool" id="editor-tool-radio" fobu-draggable="radio">
+                        <span class="drag-handle"></span>
+                        <h3>Opciones múltiples</h3>
+                        <span></span>
+                    </div>
                     <div class="editor-tool" id="editor-tool-textarea" fobu-draggable="textarea">
                         <span class="drag-handle"></span>
                         <h3>Pregunta abierta</h3>
@@ -67,7 +72,9 @@
 
                         <div class="module-info" ng-click="select(module.name); $event.stopPropagation();" fobu-module-info></div>
 
-                        <div class="question" ng-click="select(question.name); $event.stopPropagation();" ng-class="{ selected: activeElement == question.name }" ng-repeat="question in module.questions track by question.name" fobu-question id="{[{$index}]}"></div>
+                        <div class="module-questions">
+                            <div class="question" ng-click="select(question.name); $event.stopPropagation();" ng-class="{ selected: activeElement == question.name }" ng-repeat="question in module.questions track by question.name" fobu-question id="{[{$index}]}"></div>
+                        </div>
 
                     </fieldset>
 

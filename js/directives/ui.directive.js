@@ -42,16 +42,16 @@ app.directive('fobuSortable', function(){
 		link: function($scope, element, attr){
 			element.sortable({
 				placeholder:'question-placeholder',
-				forcePlaceholderSize:true,
-				helper:'clone',
+				helper: function(){
+					var helper = $(this).find(".selected").clone();
+					helper.height('auto');
+
+					return helper;
+				},
 				containment:'#editor-canvas',
 				items:'.question',
 				handle:'.drag-handle',
 				//cancel: ".question-placeholder",
-				cursorAt: { 
-					top: 0, 
-					left: 0 
-				},
 				receive:function(event,ui){
 
 					var dropped = $(this).find(".ui-draggable");
@@ -76,7 +76,7 @@ app.directive('fobuSortable', function(){
 						var moduleId = $(this).data("index");
 						var positions = $(this).sortable("toArray",{attribute:"id"});
 						$scope.sort(moduleId,positions);
-						
+
 					}
 				}
 			});

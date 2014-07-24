@@ -5,7 +5,7 @@ var app = angular.module('editorDefaults',[]);
 app.factory('_defaults',function($http){
 	return {
 		text:{
-			title:'Texto corto',
+			title:'Texto',
 			type:'text',
 			help:'',
 		},
