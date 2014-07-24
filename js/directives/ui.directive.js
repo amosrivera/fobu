@@ -5,8 +5,6 @@ var app = angular.module('editorUI',[]);
 app.directive('fobuModuleInfo', function(){
 	return {
 		restrict:'A',
-		link: function($scope,element,attr){
-		},
 		templateUrl:'templates/module-info.html'
 	}
 })
@@ -27,6 +25,7 @@ app.directive('fobuDraggable', function(){
 		link: function($scope,element,attr){
 			element.draggable({
 				connectToSortable: "#editor-canvas,.module",
+				snap:true,
 				handle:".drag-handle",
 				helper:function(){
 					return $("<div />").addClass("question-placeholder fobu-draggable")
