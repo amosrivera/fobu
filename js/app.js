@@ -62,8 +62,8 @@ app.controller('canvas', function($scope,_defaults){
 		}); 
 	}
 
-	$scope.removeQuestion = function(type){
-		console.log("Removing question...");
+	$scope.removeQuestion = function(moduleId,questionId){
+		$scope.modules[moduleId]["questions"].splice(questionId,1);
 	}
 
 	$scope.addSelectOption = function(moduleId,questionId,input){

@@ -91,7 +91,7 @@
 .question {
 	padding:0 10px;
 	border-radius:5px;
-	margin-bottom:15px;
+	margin-bottom:25px;
 }
 
 .module-questions {
@@ -146,16 +146,16 @@
 .question .controls .question-delete{
 	position:absolute;
 	top:-25px;
-	right:0;
+	right:-10px;
 	height:36px;
 	width:36px;
-	padding-left:3px;
+	padding-left:2px;
 	padding-top:7px;
 	cursor:pointer;
 	background: linear-gradient(to bottom, #fff 0%, #f9fbfd 37%, #f0f3f4 100%);
 	border:1px solid #ccc;
 	border-radius:50px;
-	border-width:1px 0 0 0;
+	border-width:1px 1px 0 1px;
 }
 
 .question .controls .question-delete::before {
