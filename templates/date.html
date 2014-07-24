@@ -1,14 +1,14 @@
-<div class="form-group clearfix">
+<div class="form-group question-date clearfix">
 	<div class="preview">
 		<label class="control-label">{[{question.title}]}</label>
 		<p class="help-block">{[{question.help}]}</p>
-		<select class="poll-date form-control" disabled>
+		<select class="form-control" disabled>
 			<option disabled selected>Día</option>
 		</select>
-		<select class="poll-date form-control" disabled>
+		<select class="form-control" disabled>
 			<option disabled selected>Mes</option>
 		</select>
-		<select class="poll-date form-control" disabled>
+		<select class="form-control" disabled>
 			<option disabled selected>Año</option>
 		</select>
 	</div>
@@ -16,6 +16,6 @@
 	    <div class="drag-handle"></div>
 		<p><input type="text" ng-model="question.title" class="form-control" /></p>
 		<p><input type="text" ng-model="question.help" class="form-control" placeholder="Texto de ayuda." /></p>
-	    <div class="drag-handle"></div>
+	    <div class="drag-handle bottom"></div>
 	</div>
 </div>

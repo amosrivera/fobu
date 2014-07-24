@@ -26,40 +26,15 @@ app.directive('fobuDraggable', function(){
 		restrict: 'A',
 		link: function($scope,element,attr){
 			element.draggable({
-				connectToSortable: "#editor-canvas",
-				appendTo:"body",
-				handle:'.drag-handle',
-				helper: "clone"
+				connectToSortable: "#editor-canvas,.module",
+				handle:".drag-handle",
+				helper:function(){
+					return $("<div />").addClass("question-placeholder fobu-draggable")
+				},
 			});
 		}
 	}
 });
-
-app.directive('fobuDroppable', function(){
-	return {
-		restrict: 'A',
-		link: function($scope, element, attr){
-			element.droppable({
-				greedy:true,
-				drop: function(event,ui){
-
-					// get question type
-					var type 		= ui.draggable.attr("fobu-draggable");
-
-					// if it was dropped inside a module get the module id
-					// if not send null
-					var moduleId 	= $(this).is(".module") ? $(this).data("index") : null;
-
-					// if it has the ui-sortable-helper class it means it was being sorted
-					// and not added. that action is taken care of in the sortable directive
-					if(!ui.helper.is(".ui-sortable-helper")){
-						$scope.addQuestion(type,moduleId);
-					}
-				}
-			})
-		}
-	}
-})
 
 app.directive('fobuSortable', function(){
 	return {
@@ -69,16 +44,40 @@ app.directive('fobuSortable', function(){
 				placeholder:'question-placeholder',
 				forcePlaceholderSize:true,
 				helper:'clone',
-				containment:'parent',
+				containment:'#editor-canvas',
 				items:'.question',
 				handle:'.drag-handle',
+				//cancel: ".question-placeholder",
 				cursorAt: { 
-					top: 20, 
+					top: 0, 
 					left: 0 
 				},
-				update: function(event,ui){
-//					console.log("");
-//					console.log($(this).sortable('toArray', {attribute: 'id'}));
+				receive:function(event,ui){
+
+					var dropped = $(this).find(".ui-draggable");
+					var position = dropped.next().attr("id");
+
+					// remove dropped tool
+					dropped.remove();
+
+					// get type of element dropped
+					var type = ui.sender.attr("fobu-draggable");
+
+					// get id of the module where it was dropped if there is one
+					// if undefined then one is created by the addQuestion function
+					var moduleId = $(this).data("index");
+
+					$scope.addQuestion(type,moduleId,position);
+				},
+
+				update:function(event,ui){
+					if($(this).is(".module")) {
+
+						var moduleId = $(this).data("index");
+						var positions = $(this).sortable("toArray",{attribute:"id"});
+						$scope.sort(moduleId,positions);
+						
+					}
 				}
 			});
 		}

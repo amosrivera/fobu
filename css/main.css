@@ -1,18 +1,25 @@
 #editor-tools {
-	background:lightgreen;
+	border-right:1px solid #ccc;
+	padding:0;
 }
 
 #editor-canvas {
 	min-height:500px;
-	background:pink;
 }
 
 /* -- Editor tools --                                */
 /* The draggable options on the side bar to the left */
 
 .editor-tool {
-	background:lightblue;
 	position:relative;
+	border-bottom:1px solid #ccc;
+	padding:10px;
+}
+
+.editor-tool h3 {
+	font-size:16px;
+	margin:0;
+	font-weight:bold;
 }
 
 .editor-tool .drag-handle {
@@ -29,21 +36,32 @@
 /* Modules */
 
 .module {
-	border:1px solid blue;
 	margin-bottom:10px;
+	overflow:hidden;
+	border:1px solid #ccc;
+	border-radius:5px;
+	padding-bottom:20px;
 }
 
 .module-info {
-	padding:10px;
-	background:#f4f4f4;
+	padding:10px;	
+	margin-bottom:20px;
+	border-bottom:1px solid #ccc;
 }
 
 .module-info h1 {
-	margin:0;
+	margin:0 0 5px 0;
+	font-size:16px;
+	font-weight:bold;
 }
 
 .module-info input {
 	margin-bottom:10px;
+	font-weight:bold;
+}
+
+.module.selected .module-info {
+	background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);	
 }
 
 .module-info .preview {
@@ -66,6 +84,16 @@
 
 /* Questions */
 
+.module .question:last-child{
+	margin-bottom:0;
+}
+
+.question {
+	padding:0 10px;
+	border-radius:5px;
+	margin-bottom:10px;
+}
+
 /* if not selected nor dragging, show the preview */
 .question .controls {
 	display:none;
@@ -81,10 +109,11 @@
 }
 
 .question.selected {
-	background:red;
+	background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+	border:1px solid #ccc;
 }
 
-/* when dragging, show the preview version */
+/* when dragging, show the preview version 
 .question.selected.ui-sortable-helper .preview {
 	display:block;
 }
@@ -92,17 +121,16 @@
 .question.selected.ui-sortable-helper .controls {
 	display:none;
 }
-
+*/
 .question .drag-handle {
 	height:20px;
-	background:red;
 	background:url("../img/icons/drag-handle.png") no-repeat center center;
 	cursor:move;
 }
 
 .question .drag-handle.bottom {
 	background:none;
-	height:10px;
+	height:5px;
 	cursor:move;
 }
 
@@ -110,7 +138,13 @@
 
 /* UI Sortable */
 .question-placeholder {
-	background:green;
+	border:1px dotted #ccc;
+	border-radius:5px;	
+}
+
+.question-placeholder.fobu-draggable {
+	width:500px;
+	height:100px;
 }
 
 /* -- end of UI sortable -- */
@@ -122,3 +156,15 @@
 }
 
 /* -- end of boostrap rewrites -- */
+
+/* Question types */
+.question-date select {
+	width:100px;
+	margin-right:10px;
+	float:left;
+}
+
+.question-date select:last-child {
+	margin-right:0;
+}
+/* -- end of question types --*/

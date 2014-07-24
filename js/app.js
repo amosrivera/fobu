@@ -25,24 +25,29 @@ app.controller('canvas', function($scope,_defaults){
 		// create unique name
 		module.name = "module_" + (new Date().getTime());
 
-		// push inside the modules array
-		var length = $scope.modules.push(module);
-
 		// length - 1 is the index of the last item added
-		return length - 1;
+		var position = $scope.modules.push(module) - 1;
+
+		module.position = position;
+
+		return position;
 	}
 
 	$scope.removeModule = function(){
 		console.log("Removing module...");
 	}
 
-	$scope.addQuestion = function(type,moduleId){
+	$scope.addQuestion = function(type,moduleId,position){
 
 
 		// if the element was not dropped inside a module then
 		// we create it
-		if (moduleId === null) {
+		if (moduleId === undefined) {
 			moduleId = $scope.addModule();
+		}
+
+		if (position === undefined) {
+			position = $scope.modules[moduleId]["questions"].length;
 		}
 
 		// take the question default values from the editorDefaults service
@@ -53,11 +58,8 @@ app.controller('canvas', function($scope,_defaults){
 
 		// push the question inside the modules array
 		$scope.$apply(function(){
-			$scope.modules[moduleId]["questions"].push(question);
+			$scope.modules[moduleId]["questions"].splice(position,0,question);
 		}); 
-
-		console.log($scope.modules);
-
 	}
 
 	$scope.removeQuestion = function(type){
@@ -80,6 +82,14 @@ app.controller('canvas', function($scope,_defaults){
 		// Delete element from the array. Angular automatically
 		// refreshes the view
 		$scope.modules[moduleId]["questions"][questionId].options.splice(index,1);
+	}
+
+	$scope.sort = function(moduleId,positions){
+
+		angular.forEach(positions,function(index,position){
+			$scope.modules[moduleId]["questions"][index].position = position;
+		});
+
 	}
 
 });

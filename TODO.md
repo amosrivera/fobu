@@ -2,7 +2,6 @@ High priority
 ===================
 - Draft support
 - Fix columns height
-- Set controls disabled when no element is selected
 - Work on the design
 
 UX
@@ -11,20 +10,27 @@ UX
 - Loader: thin line over the top
 - Video modal with examples or custom guided tours for specific examples
 - Count number of fields
-- Add dragging support for the tools
-- Scroll to the added item when not in the viewport
 
 Low priority
 ==================
-- Fix HTML5 semantics when possible 
 - Fix responsive layout
-- Clean CSS
-- Fix tag nesting <div> <element> <select> for fields
-- Unit testing
 - Performance bottle necks
 
 Completed
 =========
+x Set controls disabled when no element is selected
+// no central controls exist anymore
+x Scroll to the added item when not in the viewport
+// no need to since the item is created when dropped. hence
+// already in the viewport
+x Add dragging support for the tools
+x Unit testing 
+// this is not happening. ever.
+// unit testing require an obscene amount of set up and noddle
+// apocalypse fighting
+x Fix tag nesting <div> <element> <select> for fields
+x Clean CSS
+x Fix HTML5 semantics when possible 
 x Angular dupes error on duplicated select options 
 x Happy face along with "you have not added any fields message"
 // used an arrow instead
