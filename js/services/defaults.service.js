@@ -2,6 +2,7 @@
 
 var app = angular.module('editorDefaults',[]);
 
+// Default values to start the elements
 app.factory('_defaults',function($http){
 	return {
 		text:{
@@ -23,13 +24,13 @@ app.factory('_defaults',function($http){
 			title:'Opciones',
 			type:'select',
 			help:'Seleccione una opción',
-			options:[]
+			options:[{title:"Opcion 1"}]
 		},
 		radio:{
 			title:'Opciones',
 			type:'radio',
 			help:'Seleccione una opción',
-			options:[]
+			options:[{title:"Opcion 1"}]
 		},
 		textarea:{
 			title:'Pregunta abierta',

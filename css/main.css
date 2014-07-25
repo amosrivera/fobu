@@ -47,6 +47,7 @@
 	padding:10px;	
 	margin-bottom:20px;
 	border-bottom:1px solid #ccc;
+	background:#fafafa;
 }
 
 .module-info h1 {
@@ -60,8 +61,19 @@
 	font-weight:bold;
 }
 
+.module .drag-handle {
+	height:20px;
+	background:url("../img/icons/drag-handle.png") no-repeat center center;
+	cursor:move;
+}
+
+.module.selected {
+	background:#fafafa;
+}
+
 .module.selected .module-info {
-	background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);	
+	background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+	padding-top:0;	
 }
 
 .module-info .preview {
@@ -80,6 +92,21 @@
 	display:block;
 }
 
+.module.selected.ui-sortable-helper .module-questions,
+.module.selected.ui-sortable-helper .module-info .controls {
+	display:none;
+}
+
+.module.selected.ui-sortable-helper .module-info {
+	background:none;
+	padding:10px;
+	border-bottom:none;
+}
+
+.module.selected.ui-sortable-helper .module-info .preview {
+	display:block;
+}
+
 /* -- end of Modules -- */
 
 /* Questions */
@@ -89,9 +116,14 @@
 }
 
 .question {
-	padding:0 10px;
+	padding:10px;
 	border-radius:5px;
-	margin-bottom:25px;
+	margin-bottom:15px;
+	border:1px dotted #fff;
+}
+
+.question:hover {
+	border:1px dotted #999;
 }
 
 .module-questions {
@@ -102,6 +134,10 @@
 .question .controls {
 	display:none;
 	position:relative;
+}
+
+.question.selected {
+	padding:0 10px;
 }
 
 .question.selected .controls {
@@ -131,53 +167,10 @@
 	padding:10px;
 }
 
-.question .drag-handle {
-	height:20px;
-	background:url("../img/icons/drag-handle.png") no-repeat center center;
-	cursor:move;
-}
-
 .question .drag-handle.bottom {
 	background:none;
 	height:5px;
 	cursor:move;
-}
-
-.question .controls .question-delete{
-	position:absolute;
-	top:-25px;
-	right:-10px;
-	height:36px;
-	width:36px;
-	padding-left:2px;
-	padding-top:7px;
-	cursor:pointer;
-	background: linear-gradient(to bottom, #fff 0%, #f9fbfd 37%, #f0f3f4 100%);
-	border:1px solid #ccc;
-	border-radius:50px;
-	border-width:1px 1px 0 1px;
-}
-
-.question .controls .question-delete::before {
-	display:block;
-	width:30px;
-	height:5px;
-	content:' ';
-	background:url("../img/icons/trash-lid.png") no-repeat center center;
-	transition: all .2s linear;
-}
-
-.question .controls .question-delete::after {
-	display:block;
-	width:30px;
-	height:18px;
-	content:' ';
-	background:url("../img/icons/trash-can.png") no-repeat center center;
-}
-
-.question .controls .question-delete:hover::before {
-	margin-left:-3px;
-	transform:rotate(-45deg);
 }
 
 /* -- Questions -- */

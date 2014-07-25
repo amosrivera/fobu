@@ -2,6 +2,7 @@
 
 var app = angular.module('editorUI',[]);
 
+// Just used to abstract the html 
 app.directive('fobuModuleInfo', function(){
 	return {
 		restrict:'A',
@@ -9,6 +10,8 @@ app.directive('fobuModuleInfo', function(){
 	}
 })
 
+// This directive loads the corresponding html depending on the question time
+// you just use the fobu-question attribute
 app.directive('fobuQuestion', function(){
 	return {
 		restrict:'A',
@@ -19,6 +22,7 @@ app.directive('fobuQuestion', function(){
 	}
 })
 
+// Used by the tools
 app.directive('fobuDraggable', function(){
 	return {
 		restrict: 'A',
@@ -35,12 +39,17 @@ app.directive('fobuDraggable', function(){
 	}
 });
 
+// sorting magic
 app.directive('fobuSortable', function(){
 	return {
 		restrict: 'A',
 		link: function($scope, element, attr){
 			element.sortable({
-				placeholder:'question-placeholder',
+				placeholder:'',
+
+				// When you drag an element you actually dragged a cloned element.
+				// The original element is hidden. Helper is that cloned element.
+				// You could customize it to be anything.
 				helper: function(){
 					var helper = $(this).find(".selected").clone();
 					helper.height('auto');
@@ -48,34 +57,42 @@ app.directive('fobuSortable', function(){
 					return helper;
 				},
 				containment:'#editor-canvas',
-				items:'.question',
+				items:'.question,.module',
 				handle:'.drag-handle',
-				//cancel: ".question-placeholder",
+				// When a new element is dropped
 				receive:function(event,ui){
 
 					var dropped = $(this).find(".ui-draggable");
-					var position = dropped.next().attr("id");
+					var position = dropped.next().data("index");
 
-					// remove dropped tool
+					// Remove dropped tool
 					dropped.remove();
 
-					// get type of element dropped
+					// Get type of element dropped
 					var type = ui.sender.attr("fobu-draggable");
 
-					// get id of the module where it was dropped if there is one
+					// Get id of the module where it was dropped if there is one
 					// if undefined then one is created by the addQuestion function
 					var moduleId = $(this).data("index");
 
 					$scope.addQuestion(type,moduleId,position);
 				},
 
+				// Whenever the list changes sort the array
 				update:function(event,ui){
+
+					// if the sortable parent is a module then you're
+					// sorting questions
 					if($(this).is(".module")) {
 
 						var moduleId = $(this).data("index");
-						var positions = $(this).sortable("toArray",{attribute:"id"});
-						$scope.sort(moduleId,positions);
+						var positions = $(this).sortable("toArray",{ attribute:"data-index" });
+						$scope.sortQuestions(moduleId,positions);
 
+					// else you're sorting modules
+					} else {
+						var positions = $(this).sortable("toArray",{ attribute:"data-index" });
+						$scope.sortModules(positions);
 					}
 				}
 			});

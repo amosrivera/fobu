@@ -20,14 +20,9 @@
         <script src="js/vendor/modernizr.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">Estás usando un navegador <strong>desactualizado</strong>. Por
-			favor <a href="http://browsehappy.com/">instala uno más reciente</a> para asegurar el
-			funcionamiento del sistema.</p>
-        <![endif]-->
 
         <main class="col-md-12" id="main">
-            <div id="editor-container" ng-app="fobu">
+            <div id="editor-container" ng-app="fobu" ng-click="select(null);" ng-controller="canvas">
                 <div id="editor-tools" class="col-md-3">                    
                     <div class="editor-tool" id="editor-tool-input" fobu-draggable="text">
                         <span class="drag-handle"></span>
@@ -59,21 +54,17 @@
                         <h3>Opciones múltiples</h3>
                         <span></span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-textarea" fobu-draggable="textarea">
-                        <span class="drag-handle"></span>
-                        <h3>Pregunta abierta</h3>
-                        <span>Descripciones, comentarios</span>
-                    </div>
+                    <button class="btn primary" ng-click="save()">Save bla</button>
                 </div>
 
-                <div id="editor-canvas" class="col-md-9" ng-click="select(null);" ng-controller="canvas" fobu-sortable>
+                <div id="editor-canvas" class="col-md-9" fobu-sortable>
 
                     <fieldset class="module" ng-class="{ selected: activeElement == module.name }" data-index="{[{$index}]}" ng-repeat="module in modules track by module.name" fobu-sortable>
 
                         <div class="module-info" ng-click="select(module.name); $event.stopPropagation();" fobu-module-info></div>
 
                         <div class="module-questions">
-                            <div class="question" ng-click="select(question.name); $event.stopPropagation();" ng-class="{ selected: activeElement == question.name }" ng-repeat="question in module.questions track by question.name" fobu-question id="{[{$index}]}"></div>
+                            <div class="question" ng-click="select(question.name); $event.stopPropagation();" ng-class="{ selected: activeElement == question.name }" ng-repeat="question in module.questions track by question.name" fobu-question data-index="{[{$index}]}"></div>
                         </div>
 
                     </fieldset>
