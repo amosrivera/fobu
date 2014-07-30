@@ -23,48 +23,50 @@
 
         <main class="col-md-12" id="main">
             <div id="editor-container" ng-app="fobu" ng-click="select(null);" ng-controller="canvas">
-                <div id="editor-tools" class="col-md-3">                    
-                    <div class="editor-tool" id="editor-tool-input" fobu-draggable="text">
+                <div id="editor-tools" class="col-md-3 list-group">                    
+                    <div class="editor-tool list-group-item" id="editor-tool-input" fobu-draggable="text">
                         <span class="drag-handle"></span>
                         <h3>Campo de texto</h3>
                         <span>Nombre, correo, telefono</span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-date" fobu-draggable="date">
+                    <div class="editor-tool list-group-item" id="editor-tool-date" fobu-draggable="date">
                         <span class="drag-handle"></span>
                         <h3>Fecha</h3>
                         <span>dd/mm/aaaa</span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-number" fobu-draggable="number">
+                    <div class="editor-tool list-group-item" id="editor-tool-number" fobu-draggable="number">
                         <span class="drag-handle"></span>
                         <h3>Número</h3>
                         <span>Ingresos, distancias, tiempo</span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-select" fobu-draggable="select">
+                    <div class="editor-tool list-group-item" id="editor-tool-select" fobu-draggable="select">
                         <span class="drag-handle"></span>
                         <h3>Menu de opciones</h3>
                         <span>Escolaridad, estado de la vivienda</span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-checkbox" fobu-draggable="checkbox">
+                    <div class="editor-tool list-group-item" id="editor-tool-checkbox" fobu-draggable="checkbox">
                         <span class="drag-handle"></span>
                         <h3>Opción única</h3>
                         <span>Asiste a la escuela?</span>
                     </div>
-                    <div class="editor-tool" id="editor-tool-radio" fobu-draggable="radio">
+                    <div class="editor-tool list-group-item" id="editor-tool-radio" fobu-draggable="radio">
                         <span class="drag-handle"></span>
                         <h3>Opciones múltiples</h3>
-                        <span></span>
+                        <span>TA, DA, D, ED, TD</span>
                     </div>
-                    <button class="btn primary" ng-click="save()">Save bla</button>
+                    <div class="list-group-item">
+                        <div fobu-save-btn id="save-button"></div>
+                    </div>
                 </div>
 
-                <div id="editor-canvas" class="col-md-9" fobu-sortable>
+                <div id="editor-canvas" class="col-md-9" ng-init="get(3)" fobu-sortable>
 
-                    <fieldset class="module" ng-class="{ selected: activeElement == module.name }" data-index="{[{$index}]}" ng-repeat="module in modules track by module.name" fobu-sortable>
+                    <fieldset class="module" ng-class="{ 'selected': activeElement == module.name }" data-index="{[{$index}]}" ng-repeat="module in modules track by module.name" fobu-sortable>
 
                         <div class="module-info" ng-click="select(module.name); $event.stopPropagation();" fobu-module-info></div>
 
                         <div class="module-questions">
-                            <div class="question" ng-click="select(question.name); $event.stopPropagation();" ng-class="{ selected: activeElement == question.name }" ng-repeat="question in module.questions track by question.name" fobu-question data-index="{[{$index}]}"></div>
+                            <div class="question" ng-class="{selected: activeElement == question.name, concealed: question.hidden, required: question.required }" ng-click="select(question.name); $event.stopPropagation();" ng-repeat="question in module.questions track by question.name" fobu-question data-index="{[{$index}]}"></div>
                         </div>
 
                     </fieldset>
@@ -78,8 +80,10 @@
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/bootstrap-tour.min.js"></script>
         <script src="js/vendor/angular.min.js"></script>
+        <script src="js/vendor/moment.js"></script>
+        <script src="js/vendor/angular-moment.min.js"></script>
         <script src="js/directives/ui.directive.js"></script>
-        <script src="js/services/defaults.service.js"></script>
+        <script src="js/services/data.service.js"></script>
         <script src="js/app.js"></script>
 
         <script>

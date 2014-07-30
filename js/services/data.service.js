@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('editorDefaults',[]);
+var app = angular.module('editorData',[]);
 
 // Default values to start the elements
 app.factory('_defaults',function($http){
@@ -50,4 +50,41 @@ app.factory('_defaults',function($http){
 			questions: []
 		}
 	}
+});
+
+app.factory('_db',function($http){
+	var factory = {}
+
+	factory.save = function(data, callback) {
+
+		var req = $http({
+		    method: 'POST',
+		    url: "http://localhost/pilote/web/encuesta/save/" + data.id,
+		    data: angular.toJson(data)
+		});
+
+		//when 200
+		req.success(callback);
+
+		req.error(function(){
+			console.log("Error saving!");
+		});
+		
+	}
+
+	factory.getById = function(id,callback) {
+				
+		//ajax request to get poll json
+		var req = $http.get("http://localhost/pilote/web/encuesta/"+id);
+		var tempArray = [];
+
+		//when 200
+		req.success(callback);
+
+		req.error(function(){
+			console.log("Error fetching!", id);
+		});
+	}
+
+	return factory;
 });

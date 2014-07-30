@@ -6,22 +6,42 @@
 			<option disabled selected>Seleccione una opción</option>
 			<option ng-repeat="option in question.options" value="{[{$index}]}">{[{option.title}]}</option>
 		</select>
+		<div class="statuses">
+			<span class="concealed-icon glyphicon glyphicon-eye-close"></span>
+			<span class="required-icon glyphicon glyphicon-asterisk"></span>
+		</div>
 	</div>
 	<div class="controls">
 	    <div class="drag-handle"></div>
-		<p><input type="text" ng-model="question.title" class="form-control" /></p>
-		<p><input type="text" ng-model="question.help" class="form-control" placeholder="Texto de ayuda." /></p>
-		<div class="clearfix radio" ng-repeat="option in question.options">
-		  <label>
-		    <input type="text" ng-model="option.title" class="pull-left form-control"/>
-		    <span class="pull-left close-icon" ng-click="removeSelectOption($parent.$index,$index); $event.stopPropagation();"></span>
-		  </label>
-		</div>		
-		<div class="clearfix radio">
-		  <label>
-		    <input type="text" placeholder="Digita el nombre y presiona la tecla Enter." ng-keypress="$event.which == 13 && addSelectOption($parent.$parent.$index,$index,$event.currentTarget)" class="pull-left form-control"/>
-		  </label>
-		</div>		
+	    <div class="col col-md-10">		
+			<p><input type="text" ng-model="question.title" class="form-control" /></p>
+			<p><input type="text" ng-model="question.help" class="form-control" placeholder="Texto de ayuda." /></p>
+			<div class="clearfix radio" ng-repeat="option in question.options">
+			  <label>
+			    <input type="text" ng-model="option.title" class="pull-left form-control"/>
+			    <span class="pull-left close-icon" ng-click="removeSelectOption($parent.$index,$index); $event.stopPropagation();"></span>
+			  </label>
+			</div>		
+			<div class="clearfix radio">
+			  <label>
+			    <input type="text" placeholder="Digita el nombre y presiona la tecla Enter." ng-keypress="$event.which == 13 && addSelectOption($parent.$parent.$index,$index,$event.currentTarget)" class="pull-left form-control"/>
+			  </label>
+			</div>		
+		</div>
+		<div class="col col-md-2">
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" ng-model="question.required">
+				Requerido
+			  </label>
+			</div>
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" ng-model="question.hidden">
+				Oculto
+			  </label>
+			</div>
+		</div>
 	    <div class="drag-handle bottom"></div>
 	</div>
 </div>

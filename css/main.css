@@ -1,21 +1,9 @@
 #editor-tools {
-	border-right:1px solid #ccc;
 	padding:0;
-}
-
-#editor-canvas {
-	min-height:500px;
 }
 
 /* -- Editor tools --                                */
 /* The draggable options on the side bar to the left */
-
-.editor-tool {
-	position:relative;
-	border-bottom:1px solid #ccc;
-	padding:10px;
-}
-
 .editor-tool h3 {
 	font-size:16px;
 	margin:0;
@@ -29,6 +17,16 @@
 	width:20px;
 	float:left;
 	cursor:move;
+}
+
+.last-saved {
+	color:#888;
+	font-size:13px;
+}
+
+#save-button {
+	text-align:right;
+	padding:20px;
 }
 
 /* -- End of editor tools styles. -- */
@@ -92,18 +90,18 @@
 	display:block;
 }
 
-.module.selected.ui-sortable-helper .module-questions,
-.module.selected.ui-sortable-helper .module-info .controls {
+.module.dragging .module-questions,
+.module.dragging .module-info .controls {
 	display:none;
 }
 
-.module.selected.ui-sortable-helper .module-info {
+.module.dragging .module-info {
 	background:none;
 	padding:10px;
 	border-bottom:none;
 }
 
-.module.selected.ui-sortable-helper .module-info .preview {
+.module.dragging .module-info .preview {
 	display:block;
 }
 
@@ -120,6 +118,7 @@
 	border-radius:5px;
 	margin-bottom:15px;
 	border:1px dotted #fff;
+	position:relative;
 }
 
 .question:hover {
@@ -169,10 +168,52 @@
 
 .question .drag-handle.bottom {
 	background:none;
+	clear:both;
 	height:5px;
 	cursor:move;
 }
 
+.question .controls .col-md-2 .checkbox {
+	padding-right:5px;
+}
+
+.question .controls .col-md-2 .checkbox {
+	margin-top:0;
+}
+
+.question .controls .col-md-2 .checkbox input {
+	margin:0;
+	margin-left:20px;	
+}
+
+.question .controls .col-md-2 label {
+	font-size:12px;
+}
+
+.question .controls .col-md-2 .checkbox input,
+.question .controls .col-md-2 label {
+	float:right;
+}
+
+.question .glyphicon {
+	display:none;
+	float:left;
+	margin-right:10px;
+}
+
+.question .statuses {
+	position:absolute;
+	top:10px; 
+	right:0;
+}
+
+.question.concealed .concealed-icon {
+	display:block;
+}
+
+.question.required .required-icon {
+	display:block;
+}
 /* -- Questions -- */
 
 /* UI Sortable */
@@ -193,6 +234,10 @@
 
 .form-group {
 	margin-bottom:0;
+}
+
+.question .controls .col {
+	padding:0;
 }
 
 /* -- end of boostrap rewrites -- */

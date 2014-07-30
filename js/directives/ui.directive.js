@@ -2,6 +2,18 @@
 
 var app = angular.module('editorUI',[]);
 
+app.directive('fobuSaveBtn',function(){
+	return {
+		restrict: 'EA',
+		templateUrl:'templates/save.html',
+		link: function($scope,element){
+			element.on('click',function(){
+				$scope.save();
+			})
+		}
+	}
+});
+
 // Just used to abstract the html 
 app.directive('fobuModuleInfo', function(){
 	return {
@@ -81,18 +93,15 @@ app.directive('fobuSortable', function(){
 				// Whenever the list changes sort the array
 				update:function(event,ui){
 
-					// if the sortable parent is a module then you're
-					// sorting questions
-					if($(this).is(".module")) {
+					if($(ui.item).is(".module")) {
+						var positions = $(this).sortable("toArray",{ attribute:"data-index" });
+						$scope.sortModules(positions);
 
+					// if it is not a module, you're sorting questions
+					} else {
 						var moduleId = $(this).data("index");
 						var positions = $(this).sortable("toArray",{ attribute:"data-index" });
 						$scope.sortQuestions(moduleId,positions);
-
-					// else you're sorting modules
-					} else {
-						var positions = $(this).sortable("toArray",{ attribute:"data-index" });
-						$scope.sortModules(positions);
 					}
 				}
 			});

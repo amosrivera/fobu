@@ -3,6 +3,11 @@ High priority
 - Draft support
 - Fix columns height
 - Work on the design
+- Add missing fields to the DB
+* module description
+* required field
+* hidden field
+* 
 
 UX
 ========
@@ -10,6 +15,7 @@ UX
 - Loader: thin line over the top
 - Video modal with examples or custom guided tours for specific examples
 - Count number of fields
+- comprehensive tour
 
 Low priority
 ==================

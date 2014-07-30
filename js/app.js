@@ -2,7 +2,7 @@
 
 // Start a new angular module and require the editorUI directive and
 // the editorDefaults service 
-var app = angular.module('fobu',['editorUI','editorDefaults']);
+var app = angular.module('fobu',['editorUI','editorData','angularMoment']);
 
 // Set angular curly braces syntax to {[{}]} to avoid conflicts with twig 
 // templating engine
@@ -10,7 +10,11 @@ app.config(function($interpolateProvider){
 	$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 });
 
-app.controller('canvas', function($scope,_defaults){
+app.run(function(amMoment) {
+    amMoment.changeLanguage('es');
+});
+
+app.controller('canvas', function($scope,$timeout,_defaults,_db){
 
 	// Array that holds are module data title, text, questions, position
 	$scope.modules = [];
@@ -39,12 +43,12 @@ app.controller('canvas', function($scope,_defaults){
 		return position;
 	}
 
-	$scope.removeModule = function(){
-		console.log("Removing module...");
+	$scope.removeModule = function(moduleId){
+		// Take it out of the array
+		$scope.modules.splice(moduleId,1);
 	}
 
 	$scope.addQuestion = function(type,moduleId,position){
-
 
 		// If the element was not dropped inside a module then
 		// we create it
@@ -96,9 +100,11 @@ app.controller('canvas', function($scope,_defaults){
 	// with the elements id in the new order.
 	$scope.sortQuestions = function(moduleId,positions){
 
-		angular.forEach(positions,function(index,position){
-			$scope.modules[moduleId]["questions"][index].position = position;
-		});
+		if($scope.modules[moduleId]["questions"].length > 0){
+			angular.forEach(positions,function(index,position){
+				$scope.modules[moduleId]["questions"][index].position = position;
+			});
+		}
 
 	}
 
@@ -110,8 +116,40 @@ app.controller('canvas', function($scope,_defaults){
 
 	}
 
+
 	$scope.save = function(){
-		console.log("saving..")
+		$scope.message = {
+			text: "Guardando ...",
+			time: null
+		}
+
+		var poll = $scope.poll;
+
+		// attach modules and questions
+		poll.modules = $scope.modules;
+
+		// Save and callback
+		_db.save(poll, function(){
+			$timeout($scope.save, 60 * 1000);
+			$scope.message = {
+				text: "Guardado por última vez",
+				time: new Date()
+			}
+		});
+	}
+
+	$scope.get = function(id){
+		_db.getById(id, function(data){
+
+			// store modules in a differente variable
+			$scope.modules = data["modules"];
+			delete data["modules"];			
+
+			$scope.poll = data;
+
+			// deuda técnica
+			$scope.save();
+		});
 	}
 
 });
