@@ -2,7 +2,7 @@
 
 // Start a new angular module and require the editorUI directive and
 // the editorDefaults service 
-var app = angular.module('fobu',['editorUI','editorData','angularMoment']);
+var app = angular.module('fobu',['editorUI','editorData','angularMoment','monospaced.elastic']);
 
 // Set angular curly braces syntax to {[{}]} to avoid conflicts with twig 
 // templating engine
@@ -13,6 +13,10 @@ app.config(function($interpolateProvider){
 app.run(function(amMoment) {
     amMoment.changeLanguage('es');
 });
+
+app.config(['msdElasticConfig', function(config) {
+  config.append = '\n';
+}]);
 
 app.controller('canvas', function($scope,$timeout,_defaults,_db){
 
@@ -100,7 +104,7 @@ app.controller('canvas', function($scope,$timeout,_defaults,_db){
 	// with the elements id in the new order.
 	$scope.sortQuestions = function(moduleId,positions){
 
-		if($scope.modules[moduleId]["questions"].length > 0){
+		if($scope.modules[moduleId] !== undefined){
 			angular.forEach(positions,function(index,position){
 				$scope.modules[moduleId]["questions"][index].position = position;
 			});

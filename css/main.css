@@ -32,46 +32,43 @@
 /* -- End of editor tools styles. -- */
 
 /* Modules */
-
 .module {
-	margin-bottom:10px;
-	overflow:hidden;
-	border:1px solid #ccc;
-	border-radius:5px;
-	padding-bottom:20px;
+	position:relative;
 }
 
-.module-info {
-	padding:10px;	
-	margin-bottom:20px;
-	border-bottom:1px solid #ccc;
-	background:#fafafa;
+.module.selected .module-info {
+	padding-top:0; 
 }
 
-.module-info h1 {
-	margin:0 0 5px 0;
-	font-size:16px;
-	font-weight:bold;
+.module-style-control {
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.module-style-control .btn-group .dropdown-toggle {
+	padding:5px 15px 10px 15px;
+	background-image: linear-gradient(to bottom,#fff 0,#e8e8e8 100%);
+	border-left:1px solid #ddd;	
+}
+
+.module-style-control .btn-group.open .dropdown-toggle {
+	background-image: linear-gradient(to bottom,#e8e8e8 0,#f5f5f5 100%);	
+}
+
+.module.selected .module-style-control {
+	display:none;
 }
 
 .module-info input {
 	margin-bottom:10px;
-	font-weight:bold;
+	font-size:16px;
 }
 
 .module .drag-handle {
 	height:20px;
 	background:url("../img/icons/drag-handle.png") no-repeat center center;
 	cursor:move;
-}
-
-.module.selected {
-	background:#fafafa;
-}
-
-.module.selected .module-info {
-	background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
-	padding-top:0;	
 }
 
 .module-info .preview {
@@ -251,5 +248,19 @@
 
 .question-date select:last-child {
 	margin-right:0;
+}
+
+.module-style-control .dropdown-toggle {
+	cursor:pointer;
+}
+
+.module-style-control .dropdown-menu {
+	left:auto;
+	top:80%;
+	right:-10px;
+}
+
+.module-style-control .btn-group.open .dropdown-toggle {
+	box-shadow:0 0 0 0;
 }
 /* -- end of question types --*/

@@ -14,6 +14,13 @@ app.directive('fobuSaveBtn',function(){
 	}
 });
 
+app.directive('fobuModuleStyle', function(){
+	return {
+		restrict:'A',
+		templateUrl:'templates/module-style.html'
+	}
+})
+
 // Just used to abstract the html 
 app.directive('fobuModuleInfo', function(){
 	return {

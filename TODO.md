@@ -1,6 +1,7 @@
 High priority
 ===================
 - Draft support
+- Two columns on modules
 - Fix columns height
 - Work on the design
 - Add missing fields to the DB
@@ -8,6 +9,7 @@ High priority
 * required field
 * hidden field
 * 
+- Collapse modules on drag
 
 UX
 ========
@@ -21,6 +23,7 @@ Low priority
 ==================
 - Fix responsive layout
 - Performance bottle necks
+- Save only if there are changes ($digest stuff and so on)
 
 Completed
 =========

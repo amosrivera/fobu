@@ -1,9 +1,9 @@
 <div class="preview">
-	<h1>{[{module.title}]}</h1>
+	<h1 class="panel-title">{[{module.title}]}</h1>
 	<div>{[{module.description}]}</div>
 </div>
 <div class="controls">
-	<div class="drag-handle"></div>
+	<div class="drag-handle"></div> 
 	<input type="text" class="form-control" ng-model="module.title"/>
-	<textarea class="form-control" rows="3" cols="25" ng-model="module.description"></textarea>
+	<textarea class="form-control" rows="3" cols="25" msd-elastic ng-model="module.description"></textarea>
 </div>
