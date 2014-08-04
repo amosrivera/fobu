@@ -85,6 +85,7 @@ app.controller('canvas', function($scope,$timeout,_defaults,_db){
 
 		if(input.value.length > 0){
 
+			console.log(moduleId,questionId,input.value)
 			// Maybe modify array prototype to add a method to add questions
 			// instead of this long ugly string
 			$scope.modules[moduleId]["questions"][questionId].options.push({ title: input.value });
@@ -144,6 +145,11 @@ app.controller('canvas', function($scope,$timeout,_defaults,_db){
 
 	$scope.get = function(id){
 		_db.getById(id, function(data){
+
+			// duda tecnica
+			angular.forEach(data.modules,function(module){
+				module.style = "Una columna";
+			});
 
 			// store modules in a differente variable
 			$scope.modules = data["modules"];

@@ -1,13 +1,19 @@
 #editor-tools {
-	padding:0;
+	position:relative;
 }
 
 /* -- Editor tools --                                */
 /* The draggable options on the side bar to the left */
 .editor-tool h3 {
-	font-size:16px;
+	font-size:14px;
 	margin:0;
 	font-weight:bold;
+	padding:0 0 0 20px;
+}
+
+.editor-tool span {
+	font-size:11px;
+	padding:0 0 0 20px;
 }
 
 .editor-tool .drag-handle {
@@ -15,7 +21,9 @@
 	display:block;
 	height:30px;
 	width:20px;
-	float:left;
+	left:10px;
+	top:10px;
+	position:absolute;
 	cursor:move;
 }
 

@@ -24,10 +24,20 @@
         <main class="col-md-12" id="main">
             <div id="editor-container" ng-app="fobu" ng-click="select(null);" ng-controller="canvas">
                 <div id="editor-tools" class="col-md-3 list-group">                    
+                    <div class="editor-tool list-group-item" id="editor-tool-header" fobu-draggable="header">
+                        <span class="drag-handle"></span>
+                        <h3>Título</h3>
+                        <span>División entre campos</span>
+                    </div>
                     <div class="editor-tool list-group-item" id="editor-tool-input" fobu-draggable="text">
                         <span class="drag-handle"></span>
                         <h3>Campo de texto</h3>
                         <span>Nombre, correo, telefono</span>
+                    </div>
+                    <div class="editor-tool list-group-item" id="editor-tool-textarea" fobu-draggable="textarea">
+                        <span class="drag-handle"></span>
+                        <h3>Campo abierto</h3>
+                        <span>Descripciones, comentrios</span>
                     </div>
                     <div class="editor-tool list-group-item" id="editor-tool-date" fobu-draggable="date">
                         <span class="drag-handle"></span>
@@ -49,10 +59,25 @@
                         <h3>Opción única</h3>
                         <span>Asiste a la escuela?</span>
                     </div>
-                    <div class="editor-tool list-group-item" id="editor-tool-radio" fobu-draggable="radio">
+                    <div class="editor-tool list-group-item" id="editor-tool-multiple" fobu-draggable="checkbox">
                         <span class="drag-handle"></span>
                         <h3>Opciones múltiples</h3>
+                        <span>Cuáles son los problemas más importantes?</span>
+                    </div>
+                    <div class="editor-tool list-group-item" id="editor-tool-radio" fobu-draggable="radio">
+                        <span class="drag-handle"></span>
+                        <h3>Listado de opciónes</h3>
                         <span>TA, DA, D, ED, TD</span>
+                    </div>
+                    <div class="editor-tool list-group-item" id="editor-tool-gps" fobu-draggable="gps">
+                        <span class="drag-handle"></span>
+                        <h3>Coordenadas GPS</h3>
+                        <span>12.1364, 86.2514</span>
+                    </div>
+                    <div class="editor-tool list-group-item" id="editor-tool-gps" fobu-draggable="size">
+                        <span class="drag-handle"></span>
+                        <h3>Tamaño</h3>
+                        <span>23m x 15m</span>
                     </div>
                     <div class="list-group-item">
                         <div fobu-save-btn id="save-button"></div>

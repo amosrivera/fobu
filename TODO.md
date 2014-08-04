@@ -8,7 +8,7 @@ High priority
 * module description
 * required field
 * hidden field
-* 
+* poll description
 - Collapse modules on drag
 
 UX
@@ -24,6 +24,7 @@ Low priority
 - Fix responsive layout
 - Performance bottle necks
 - Save only if there are changes ($digest stuff and so on)
+- Convertir '\n' a <p>
 
 Completed
 =========

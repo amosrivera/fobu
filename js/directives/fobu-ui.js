@@ -7,7 +7,7 @@ app.directive('fobuSaveBtn',function(){
 		restrict: 'EA',
 		templateUrl:'templates/save.html',
 		link: function($scope,element){
-			element.on('click',function(){
+			element.find(".btn").on('click',function(){
 				$scope.save();
 			})
 		}

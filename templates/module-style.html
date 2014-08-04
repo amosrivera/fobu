@@ -1,9 +1,10 @@
 <!-- Single button -->
 <div class="btn-group">
-  <p class="dropdown-toggle" data-toggle="dropdown"> Estilo <span class="caret"></span></p>
+  <p class="dropdown-toggle" data-toggle="dropdown"> Estilo ({[{ module.style }]}) <span class="caret"></span></p>
 
   <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Una columna</a></li>
-    <li><a href="#">Dos columnas</a></li>
+    <li><a href="#" ng-click="module.style='Una columna'">Una columna</a></li>
+    <li><a href="#" ng-click="module.style='Dos columnas'">Dos columnas</a></li>
+    <li><a href="#" ng-click="module.style='Tabla'">Tabla</a></li>
   </ul>
 </div>
